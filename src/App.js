@@ -1,25 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import lightBG from './assets/bg-light.png';
+import WeatherLayout from './components/Layout/WeatherLayout';
+import SearchContextProvider from './contexts/search-context';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const myStyle = {
+        backgroundImage: `url(${lightBG})`,
+        height: '100%',
+        // fontSize: '50px',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+    };
+
+    return (
+        <SearchContextProvider>
+            <div className="App" style={myStyle}>
+                <div className="container py-5">
+                    <WeatherLayout />
+                </div>
+            </div>
+        </SearchContextProvider>
+    );
 }
 
 export default App;
